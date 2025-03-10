@@ -1,28 +1,27 @@
-# Hydration Kit For Windows Server 2022, SQL Server 2019 and ConfigMgr Current Branch
+# Hydration Kit For Windows Server 2025, SQL Server 2022 and ConfigMgr Current Branch
 
-This kit builds a complete **ConfigMgr Current Branch 2111** infrastructure running on **Windows Server 2022** and **SQL Server 2019**, including optional **Windows 10** and **Windows 11** clients. This kit is tested on both Hyper-V and VMware virtual platforms, but should work fine on other virtualization platforms like Virtual Box, KVM etc.
+This kit builds a complete **ConfigMgr Current Branch 2403** infrastructure running on **Windows Server 2025** and **SQL Server 2022**, including optional **Windows 10** and **Windows 11** clients. This kit is tested on both Hyper-V and VMware virtual platforms, but should work fine on other virtualization platforms like Virtual Box, KVM etc.
 
-- [Hydration Kit For Windows Server 2022, SQL Server 2019 and ConfigMgr Current Branch](#hydration-kit-for-windows-server-2022-sql-server-2019-and-configmgr-current-branch)
-  - [Notes](#notes)
-  - [Hydration Kit For Windows Server 2022 and ConfigMgr Current Branch](#hydration-kit-for-windows-server-2022-and-configmgr-current-branch)
-    - [Servers](#servers)
-      - [Main servers](#main-servers)
-      - [Optional supporting servers](#optional-supporting-servers)
-    - [Clients](#clients)
-  - [Setup Overview](#setup-overview)
-  - [Step-by-Step Guides](#step-by-step-guides)
-    - [Step 1: Download the software](#step-1---download-the-software)
-      - [Optional Servers](#optional-servers)
-      - [Optional Clients](#optional-clients)
-    - [Step 2: Install the Hydration Kit](#step-2---install-the-hydration-kit)
-      - [Installing Hydration Kit Prerequisites](#installing-hydration-kit-prerequisites)
-        - [Installing the Hydration Kit](#installing-the-hydration-kit)
-    - [Step 3: Copy the downloaded software to the Hydration Kit](#step-3---copy-the-downloaded-software-to-the-hydration-kit)
-      - [Optional: Populate the hydration deployment share with files for MDT01](#optional---populate-the-hydration-deployment-share-with-files-for-mdt01)
-    - [Step 4: Create the bootable Hydration Kit ISO (MDT offline media item)](#step-4---create-the-bootable-hydration-kit-iso-mdt-offline-media-item)
-    - [Step 5: Create and Deploy the virtual machines](#step-5---create-and-deploy-the-virtual-machines)
-  - [Optional Post-ConfigMgr Install Tasks](#next-steps---optional-post-configmgr-install-tasks)
-  - [Customizing the Hydration Kit](#next-steps---customizing-the-hydration-kit)
+- [Notes](#notes)
+- [Hydration Kit for Windows Server 2025 and ConfigMgr Current Branch](#hydration-kit-for-windows-server-2025-and-configmgr-current-branch)
+  - [Servers](#servers)
+    - [Main servers](#main-servers)
+    - [Optional supporting servers](#optional-supporting-servers)
+  - [Clients](#clients)
+- [Setup Overview](#setup-overview)
+- [Step-by-Step Guides](#step-by-step-guides)
+  - [Step 1: Download the software](#step-1---download-the-software)
+    - [Optional Servers](#optional-servers)
+    - [Optional Clients](#optional-clients)
+  - [Step 2: Install the Hydration Kit](#step-2---install-the-hydration-kit)
+    - [Installing Hydration Kit Prerequisites](#installing-hydration-kit-prerequisites)
+      - [Installing the Hydration Kit](#installing-the-hydration-kit)
+  - [Step 3: Copy the downloaded software to the Hydration Kit](#step-3---copy-the-downloaded-software-to-the-hydration-kit)
+    - [Optional: Populate the hydration deployment share with files for MDT01](#optional---populate-the-hydration-deployment-share-with-files-for-mdt01)
+  - [Step 4: Create the bootable Hydration Kit ISO (MDT offline media item)](#step-4---create-the-bootable-hydration-kit-iso-mdt-offline-media-item)
+  - [Step 5: Create and Deploy the virtual machines](#step-5---create-and-deploy-the-virtual-machines)
+- [Optional Post-ConfigMgr Install Tasks](#next-steps---optional-post-configmgr-install-tasks)
+- [Customizing the Hydration Kit](#next-steps---customizing-the-hydration-kit)
 
 Download from GitHub: <https://github.com/DeploymentResearch/HydrationKitWS2022>
 
@@ -54,10 +53,12 @@ Download from GitHub: <https://github.com/DeploymentResearch/HydrationKitWS2022>
     <https://deploymentresearch.com/hydration-kit-for-windows-server-2016-and-configmgr-current-technical-preview-branch/>
 - Hydration Kit for Windows Server 2019 and ConfigMgr Current Branch\
     <https://www.deploymentresearch.com/hydration-kit-for-windows-server-2019-sql-server-2017-and-configmgr-current-branch/>
+- Hydration Kit for Windows Server 2022 and ConfigMgr Current Branch\
+    <https://www.deploymentresearch.com/hydration-kit-for-windows-server-2022-sql-server-2019-and-configmgr-current-branch/>
 
-## Hydration Kit for Windows Server 2022 and ConfigMgr Current Branch
+## Hydration Kit for Windows Server 2025 and ConfigMgr Current Branch
 
-So, again, this Kit builds a complete ConfigMgr Current Branch 2111, with Windows Server 2019 and SQL Server 2019 infrastructure, and some supporting servers. Once the build is complete, I recommend that you use the native ConfigMgr servicing option to update to latest release or Hotfix if available.
+So, again, this Kit builds a complete ConfigMgr Current Branch 2403, with Windows Server 2025 and SQL Server 2022 infrastructure, and some supporting servers. Once the build is complete, I recommend that you use the native ConfigMgr servicing option to update to latest release or Hotfix if available.
 
 ### Servers
 
@@ -65,14 +66,14 @@ This kit allows you to automatically deploy the below list of servers. The serve
 
 #### Main servers
 
-- **DC01**. Windows Server 2022, DC, DHCP and DNS
-- **CM01**. Windows Server 2022, SQL Server 2019, and ConfigMgr Current Branch
+- **DC01**. Windows Server 2025, DC, DHCP and DNS
+- **CM01**. Windows Server 2025, SQL Server 2022, and ConfigMgr Current Branch
 
 #### Optional supporting servers
 
-- **MDT01**. Windows Server 2022, SQL Server 2019 Express, and MDT 8456
-- **FS01**. Windows Server 2022, File Server
-- **DP01**. Windows Server 2022, additional ConfigMgr DP
+- **MDT01**. Windows Server 2025, SQL Server 2022 Express, and MDT 8456
+- **FS01**. Windows Server 2025, File Server
+- **DP01**. Windows Server 2025, additional ConfigMgr DP
 
 ### Clients
 
@@ -111,14 +112,14 @@ On the Windows machine (client or server, 64 bit) that you use to manage Hyper-V
 
 Then, for the main servers (DC01 and CM01), you need to download the following software:
 
-- The Hydration Kit: <https://github.com/DeploymentResearch/HydrationKitWS2022>
+- The Hydration Kit: <https://github.com/DeploymentResearch/HydrationKitWS2025>
 - MDT 8456 (The kit is based on that platform): <https://www.microsoft.com/en-us/download/details.aspx?id=54259>
 - MDT 8456 Hotfix: <https://download.microsoft.com/download/3/0/6/306AC1B2-59BE-43B8-8C65-E141EF287A5E/KB4564442/MDT_KB4564442.exe>
-- BGInfo: [http://technet.microsoft.com/en-us/sysinternals/bginfo](https://technet.microsoft.com/en-us/sysinternals/bginfo)
-- A Windows Server 2022 Standard WIM image (single index, fully updated). The easiest way to get one is to download an already updated Windows Server 2022 ISO file, and then run this PowerShell script: <https://github.com/DeploymentResearch/DRFiles/blob/master/Scripts/Export-WindowsServer2022WIMfromISO.ps1>
-- SQL Server 2019 Standard x64: Either a fully licensed version from VLSC or MSDN, or a 180 days trial version from the Microsoft Evaluation Center: <https://www.microsoft.com/en-us/evalcenter/>
-- SQL Server 2019 Cumulative Update (CU) 14 (or later): [https://www.microsoft.com/en-us/download/details.aspx?id=100809](https://www.microsoft.com/en-us/download/details.aspx?id=100809) (ConfigMgr only requires CU 5 for SQL Server 2019, but I recommend using the latest CU).
-- SQL Server 2019 Reporting Services: <https://www.microsoft.com/en-us/download/details.aspx?id=100122>
+- BGInfo: [https://learn.microsoft.com/en-us/sysinternals/downloads/bginfo](https://learn.microsoft.com/en-us/sysinternals/downloads/bginfo)
+- A Windows Server 2025 Standard WIM image (single index, fully updated). The easiest way to get one is to download an already updated Windows Server 2025 ISO file, and then run this PowerShell script: <https://github.com/DeploymentResearch/DRFiles/blob/master/Scripts/Export-WindowsServer2025WIMfromISO.ps1>
+- SQL Server 2022 Standard x64: Either a fully licensed version from VLSC or MSDN, or a 180 days trial version from the Microsoft Evaluation Center: <https://www.microsoft.com/en-us/evalcenter/>
+- SQL Server 2022 Latest Cumulative Update: [https://www.microsoft.com/en-us/download/details.aspx?id=105013](https://www.microsoft.com/en-us/download/details.aspx?id=105013) (ConfigMgr only requires the base version of SQL Server 2022, but I recommend using the latest CU).
+- SQL Server 2022 Reporting Services: <https://www.microsoft.com/en-us/download/details.aspx?id=104502>
 - SQL Server Management Studio: <https://aka.ms/ssmsfullsetup>
 - Microsoft ODBC Driver 18 for SQL Server (x64): <https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server>
 - ConfigMgr 2403 and its prerequisites: Either a fully licensed version from VLSC or MSDN, or a 180 days trial version from the Microsoft Evaluation Center: <https://www.microsoft.com/en-us/evalcenter/evaluate-microsoft-endpoint-configuration-manager>
@@ -131,9 +132,7 @@ Then, for the main servers (DC01 and CM01), you need to download the following s
 
 Windows ADK for Windows 11and the ADK WinPE Addon for Windows 11: <https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install>
 
-**Note #1:** Make sure to get the 22H2 version of the Windows ADK for Windows 11 (10.1.22621.1), not the new 23H2 version (10.1.25398.1, released in September 2023).
-
-More information can be found in this blog post: [https://www.deploymentresearch.com/windows-11-deployment-using-mdt-8456-with-windows-adk-23h2-build-25398/](https://www.deploymentresearch.com/windows-11-deployment-using-mdt-8456-with-windows-adk-23h2-build-25398/)
+**Note #1:** Make sure to get the 24H2 version of the Windows ADK for Windows 11 (10.1.26100.2454), released December 2024
 
 **Note #2:** To download the complete standalone Windows ADK for Windows 11 setup, run **adksetup.exe /layout "C:\Setup\Windows ADK 11**" for the core ADK, and then **adkwinpesetup.exe /layout "C:\Setup\Windows ADK 11 WinPE Addon"** for the WinPE Addon.
 
@@ -149,15 +148,15 @@ More information can be found in this blog post: [https://www.deploymentresearch
 
 The FS01 and DP01 optional servers don't need any extra software, but for the MDT01 server, you also need to download the following software:
 
-- SQL Server 2019 Express: <https://www.microsoft.com/en-us/Download/details.aspx?id=101064>
+- SQL Server 2022 Express: <https://www.microsoft.com/en-us/download/details.aspx?id=104781>
 
->**Note:** Use the SQL2019-SSEI-Expr.exe web installer to download the Express Core media (SQLEXPR_x64_ENU.exe)
+>**Note:** Use the SQL2022-SSEI-Expr.exe web installer to download the Express Core media (SQLEXPR_x64_ENU.exe)
 
-![Using the SQL2019-SSEI-Expr.exe web installer to download media.(docs/Downloading-SQL-Server-2019-Express-from-web-installer.png)
+![Using the SQL2022-SSEI-Expr.exe web installer to download media.](docs/Downloading-SQL-Server-2022-Express-from-web-installer.png)
 
-*Using the SQL2019-SSEI-Expr.exe web installer to download media.*
+*Using the SQL2022-SSEI-Expr.exe web installer to download media.*
 
-![Selecting the Express Core version.](docs/Downloading-SQL-Server-2019-Express-from-web-installer-002-Download-Page.png)
+![Selecting the Express Core version.](docs/Downloading-SQL-Server-2022-Express-from-web-installer-002-Download-Page.png)
 
 *Selecting the Express Core version.*
 
@@ -205,7 +204,7 @@ More information can be found in this blog post: [https://www.deploymentresearch
 
 4\. Install the **MDT 8456 HotFix**.
 
->**Note:** Due to a code change in Windows 10 2004 or later (including Windows 11 and Windows Server 2022), and Windows ADK 10 2004 and later, you need to download some updated files for MDT 8456. You can download these files here: <https://download.microsoft.com/download/3/0/6/306AC1B2-59BE-43B8-8C65-E141EF287A5E/KB4564442/MDT_KB4564442.exe>
+>**Note:** Due to a code change in Windows 10 2004 or later (including Windows 11 and Windows Server 2025), and Windows ADK 10 2004 and later, you need to download some updated files for MDT 8456. You can download these files here: <https://download.microsoft.com/download/3/0/6/306AC1B2-59BE-43B8-8C65-E141EF287A5E/KB4564442/MDT_KB4564442.exe>
 
 4a. Download the **MDT 8456 HotFix**(MDT_KB4564442.exe), and extract it to a folder. I extracted it to **C:\Setup\MDT 8456 HotFix**.
 
@@ -241,15 +240,15 @@ The folder you used should now have a sub-folder named Source, two PowerShell sc
 
 Next step is to start copying the various installation files to the correct folder.
 
-1\. Copy your **Windows Server 2022 reference image** (have to be named **REFWS2022-001.wim**, case sensitive), to the following folder: **C:\CMLab\DS\Operating Systems\WS2022**
+1\. Copy your **Windows Server 2025 reference image** (have to be named **REFWS2022-001.wim**, case sensitive), to the following folder: **C:\CMLab\DS\Operating Systems\WS2022**
 
-**Note #1:** The WIM image should only have a single index with the **Windows Server 2022 with Desktop Experience** edition. Please use the script to extract the correct index from a Windows Server 2022 ISO file.
+**Note #1:** The WIM image should only have a single index with the **Windows Server 2025 with Desktop Experience** edition. Please use the script to extract the correct index from a Windows Server 2025 ISO file.
 
 **Note #2:** If your VMs does not have Internet access during the Hydration Kit build, make sure to also copy the **microsoft-windows-netfx3-ondemand-package~31bf3856ad364e35~amd64~~.cab** file to the following folder: **C:\CMLab\DS\Operating Systems\WS2022\sources\sxs**. Failing to do so will prevent .NET Framework 3.5 from being installed if the VM does not have Internet access.
 
-![The Windows Server 2022 Standard image copied.](docs/WS2022-WIM-Copied.png)
+![The Windows Server 2025 Standard image copied.](docs/WS2022-WIM-Copied.png)
 
-*The Windows Server 2022 Standard image copied.*
+*The Windows Server 2025 Standard image copied.*
 
 ![.NET Framework 3.5 copied](docs/WS2022-Sources-Sxs-Copied.png)
 
@@ -275,18 +274,18 @@ Next step is to start copying the various installation files to the correct fold
 
 *Windows ADK 11 WinPE Addon setup files copied.*
 
-5\. Copy the **SQL Server 2019 Standard x64** setup files (the content of the ISO, not the actual ISO) to the following folder:\
-**C:\CMLab\DS\Applications\Install - SQL Server 2019 Standard\Source**
+5\. Copy the **SQL Server 2022 Standard x64** setup files (the content of the ISO, not the actual ISO) to the following folder:\
+**C:\CMLab\DS\Applications\Install - SQL Server 2022 Standard\Source**
 
-![SQL Server 2019 Standard x64 setup files copied.](docs/SQL-Server-2019-Standard-Copied.png)
+![SQL Server 2022 Standard x64 setup files copied.](docs/SQL-Server-2019-Standard-Copied.png)
 
-*SQL Server 2019 Standard x64 setup files copied.*
+*SQL Server 2022 Standard x64 setup files copied.*
 
-6\. In the **C:\CMLab\DS\Applications\Install - SQL Server 2019 Standard\Source** folder, create a subfolder named **Updates**, and copy thelatest **SQL Server 2019 CU** setup file to it (CU 14 when I wrote this guide).
+6\. In the **C:\CMLab\DS\Applications\Install - SQL Server 2022 Standard\Source** folder, create a subfolder named **Updates**, and copy thelatest **SQL Server 2022 CU** setup file to it (CU 14 when I wrote this guide).
 
-![The SQL Server 2019 CU copied to Updates folder.](docs/SQL-Server-2019-CU-14-Copied.png)
+![The SQL Server 2022 CU copied to Updates folder.](docs/SQL-Server-2019-CU-14-Copied.png)
 
-*The SQL Server 2019 CU copied to Updates folder.*
+*The SQL Server 2022 CU copied to Updates folder.*
 
 7\. Copy the **SQL Server Management Studio** setup file to the following folder:\
 **C:\CMLab\DS\Applications\Install - SQL Server Management Studio**
@@ -295,8 +294,8 @@ Next step is to start copying the various installation files to the correct fold
 
 *The SQL Server Management Studio setup file copied.*
 
-8\. Copy the **SQL Server 2019 Reporting Services** setup file to the following folder:\
-**C:\CMLab\DS\Applications\Install - SQL Server 2019 Reporting Services\Source**
+8\. Copy the **SQL Server 2022 Reporting Services** setup file to the following folder:\
+**C:\CMLab\DS\Applications\Install - SQL Server 2022 Reporting Services\Source**
 
 ![SQL Server Reporting Services setup files copied.](docs/SQL-Server-Reporting-Services-Copied.png)
 
@@ -343,12 +342,12 @@ Next step is to start copying the various installation files to the correct fold
 
 >**Note:** These steps are only needed if you want to deploy the optional MDT01 virtual machine. If you don't need this VM, simply skip to the next section: "Create the Hydration Kit ISO (MDT offline media item)"
 
-1\. Copy the SQL Server 2019 Express setup file (SQLEXPR_x64_ENU.exe) to the following folder:\
-**C:\CMLab\DS\Applications\Install - SQL Server 2019 Express\Source**
+1\. Copy the SQL Server 2022 Express setup file (SQLEXPR_x64_ENU.exe) to the following folder:\
+**C:\CMLab\DS\Applications\Install - SQL Server 2022 Express\Source**
 
-![SQL Server 2019 Express setup file copied.](docs/SQL-Server-2019-Express-Copied.png)
+![SQL Server 2022 Express setup file copied.](docs/SQL-Server-2019-Express-Copied.png)
 
-*SQL Server 2019 Express setup file copied.*
+*SQL Server 2022 Express setup file copied.*
 
 2.\. Copy the **MDT 8456** setup file (MicrosoftDeploymentToolkit_x64.msi) to the following folder:\
 **C:\CMLab\DS\Applications\Install - MDT**
@@ -371,7 +370,7 @@ Next step is to start copying the various installation files to the correct fold
 
 *Creating the bootable Hydration Kit ISO file.*
 
-After the media update you will have a big ISO (HydrationCMWS2022.iso) in the C:\CMLab\ISO folder. The HydrationCMWS2022.iso should be about 14-16 GB in size (size will vary a bit depending on your Windows Server 2022 image and software added).
+After the media update you will have a big ISO (HydrationCMWS2025.iso) in the C:\CMLab\ISO folder. The HydrationCMWS2025.iso should be about 14-16 GB in size (size will vary a bit depending on your Windows Server 2025 image and software added).
 
 ![The Hydration Kit ISO file.](docs/Hydration-Kit-ISO-file.png)
 
@@ -385,7 +384,7 @@ First, all accounts, including Administrator, have a password of **P@ssw0rd**. S
 
 If you want a PowerShell script that creates these VMs for Hyper-V, use **New-LabVMsForHyperV.ps1** script from the **C:\Setup\HydrationKit** folder. The syntax for the scripts is as follows:
 
-`.\New-LabVMsForHyperV.ps1 -VMLocation C:\VMs -VMNetwork Internal -ISO C:\CMLab\ISO\HydrationCMWS2022.iso`
+`.\New-LabVMsForHyperV.ps1 -VMLocation C:\VMs -VMNetwork Internal -ISO C:\CMLab\ISO\HydrationCMWS2025.iso`
 
 ![Running the New-LabVMsForHyperV.ps1 script.](docs/Running-the-Hydration-Kit-VM-Creation-Script-1024x180.png)
 
@@ -406,9 +405,9 @@ Using **Hyper-V Manager** or **VMware Workstation/Sphere**, create a virtual mac
 - Hard drive: **100 GB** (dynamic disk)
 - Memory: **2 GB** (static memory)
 - Network: **Your lab network**
-- Image file (ISO): **C:\CMLab\ISO\HydrationCMWS2022.iso**
+- Image file (ISO): **C:\CMLab\ISO\HydrationCMWS2025.iso**
 
-1. Start the **DC01** virtual machine. After booting from **HydrationCMWS2022.iso** , and after WinPE has loaded, select the **DC01** task sequence.
+1. Start the **DC01** virtual machine. After booting from **HydrationCMWS2025.iso** , and after WinPE has loaded, select the **DC01** task sequence.
 2. Wait until the setup is complete and you see the **Hydration Complete** message in the final summary.
 3. Leave **DC01** running while deploying the **CM01 virtual machine.**
 
@@ -421,7 +420,7 @@ Once the domain controller (DC01) is up and running, you can deploy the CM01 vir
 - Hard drive: **300 GB** (dynamic disk)
 - Memory: **16 GB** (static memory)
 - Network: **Your lab network**
-- Image file (ISO): **C:\CMLab\ISO\HydrationCMWS2022.iso**
+- Image file (ISO): **C:\CMLab\ISO\HydrationCMWS2025.iso**
 
 #### Post configuration of CM01
 
@@ -438,7 +437,7 @@ Once the domain controller (DC01) is up and running, you can deploy the optional
 - Hard drive: **300 GB** (dynamic disk)
 - Memory: **4 GB** (static memory)
 - Network: **Your lab network**
-- Image file (ISO): **C:\CMLab\ISO\HydrationCMWS2022.iso**
+- Image file (ISO): **C:\CMLab\ISO\HydrationCMWS2025.iso**
 
 #### **Deploying DP01 (Optional)**
 
@@ -449,7 +448,7 @@ Once the domain controller (DC01) is up and running, you can deploy the optional
 - Hard drive: **300 GB** (dynamic disk)
 - Memory: **4 GB** (static memory)
 - Network: **Your lab network**
-- Image file (ISO): **C:\CMLab\ISO\HydrationCMWS2022.iso**
+- Image file (ISO): **C:\CMLab\ISO\HydrationCMWS2025.iso**
 
 #### **Deploying FS01 (Optional)**
 
@@ -460,7 +459,7 @@ Once the domain controller (DC01) is up and running, you can deploy the optional
 - Hard drive: **300 GB** (dynamic disk)
 - Memory: **4 GB** (static memory)
 - Network: **Your lab network**
-- Image file (ISO): **C:\CMLab\ISO\HydrationCMWS2022.iso**
+- Image file (ISO): **C:\CMLab\ISO\HydrationCMWS2025.iso**
 
 #### **Deploying PC0001-4 (Optional)**
 
@@ -471,7 +470,7 @@ Once the domain controller (DC01) is up and running, you can deploy the optional
 - Hard drive: **60 GB** (dynamic disk)
 - Memory: **4 GB** (static memory)
 - Network: **Your lab network**
-- Image file (ISO): **C:\CMLab\ISO\HydrationCMWS2022.iso**
+- Image file (ISO): **C:\CMLab\ISO\HydrationCMWS2025.iso**
 
 ## Next Steps - Optional Post-ConfigMgr Install Tasks
 
@@ -524,8 +523,8 @@ If you need to change the various service accounts, you need to to modify the **
 
 ### Customizing with a script
 
-With a huge thanks to [Matt Benninge](https://www.deploymentresearch.com/author/matbg/), a customization script called [CustomizeHydrationKit.ps1](https://github.com/DeploymentResearch/HydrationKitWS2022/blob/main/CustomizeHydrationKit.ps1) has been updated and added to the Server 2022 kit for the first time! This script assists in changing many of the customizable parameters of the Hydration Kit, including IP addresses, domain name, time zone, and passwords.
+With a huge thanks to [Matt Benninge](https://www.deploymentresearch.com/author/matbg/), a customization script called [CustomizeHydrationKit.ps1](https://github.com/DeploymentResearch/HydrationKitWS2022/blob/main/CustomizeHydrationKit.ps1) is included in this kit. This script assists in changing many of the customizable parameters of the Hydration Kit, including IP addresses, domain name, time zone, and passwords.
 
 In addition, the script will make a copy of the original configuration so that you can easily revert your changes. Upon rerunning the script on a customized Deployment Share, the script will revert all files to the original copies before applying your changes again.
 
-*Written by Johan Arwidmark*
+*Written by Johan Arwidmark/Andrew Johnson*
