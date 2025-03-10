@@ -254,7 +254,7 @@ Next step is to start copying the various installation files to the correct fold
 
 *.NET Framework 3.5 copied*
 
-2\. Copy the **BGInfo** file (bginfo.exe) to the following folder: **C:\**CMLab\**DS\Applications\Install - BGInfo\Source**
+2\. Copy the **BGInfo** file (bginfo.exe) to the following folder: **C:\CMLab\DS\Applications\Install - BGInfo\Source**
 
 ![BGInfo copied.](docs/BGInfo.png)
 
@@ -281,7 +281,7 @@ Next step is to start copying the various installation files to the correct fold
 
 *SQL Server 2022 Standard x64 setup files copied.*
 
-6\. In the **C:\CMLab\DS\Applications\Install - SQL Server 2022 Standard\Source** folder, create a subfolder named **Updates**, and copy thelatest **SQL Server 2022 CU** setup file to it (CU 14 when I wrote this guide).
+6\. In the **C:\CMLab\DS\Applications\Install - SQL Server 2022 Standard\Source** folder, create a subfolder named **Updates**, and copy the latest **SQL Server 2022 CU** setup file to it (CU 17 when I wrote this guide).
 
 ![The SQL Server 2022 CU copied to Updates folder.](docs/SQL-Server-2019-CU-14-Copied.png)
 
