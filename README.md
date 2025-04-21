@@ -23,7 +23,7 @@ This kit builds a complete **ConfigMgr Current Branch 2403** infrastructure runn
 - [Optional Post-ConfigMgr Install Tasks](#next-steps---optional-post-configmgr-install-tasks)
 - [Customizing the Hydration Kit](#next-steps---customizing-the-hydration-kit)
 
-Download from GitHub: <https://github.com/DeploymentResearch/HydrationKitWS2022>
+Download from GitHub: <https://github.com/DeploymentResearch/HydrationKitWS2025>
 
 **Hydration Kit Video:** Check out the free mini course at the ViaMonstra Online Academy covering the Hydration Kit setup (and many other tips and tricks related for creating a lab for ConfigMgr, MDT and Intune): [Building the Perfect Lab for ConfigMgr, MDT, and Intune](https://academy.viamonstra.com/courses/mini-course-building-the-perfect-lab-for-configmgr-mdt-and-intune).
 
@@ -240,11 +240,11 @@ The folder you used should now have a sub-folder named Source, two PowerShell sc
 
 Next step is to start copying the various installation files to the correct folder.
 
-1\. Copy your **Windows Server 2025 reference image** (have to be named **REFWS2022-001.wim**, case sensitive), to the following folder: **C:\CMLab\DS\Operating Systems\WS2022**
+1\. Copy your **Windows Server 2025 reference image** (have to be named **REFWS2025-001.wim**, case sensitive), to the following folder: **C:\CMLab\DS\Operating Systems\WS2025**
 
 **Note #1:** The WIM image should only have a single index with the **Windows Server 2025 with Desktop Experience** edition. Please use the script to extract the correct index from a Windows Server 2025 ISO file.
 
-**Note #2:** If your VMs does not have Internet access during the Hydration Kit build, make sure to also copy the **microsoft-windows-netfx3-ondemand-package~31bf3856ad364e35~amd64~~.cab** file to the following folder: **C:\CMLab\DS\Operating Systems\WS2022\sources\sxs**. Failing to do so will prevent .NET Framework 3.5 from being installed if the VM does not have Internet access.
+**Note #2:** If your VMs does not have Internet access during the Hydration Kit build, make sure to also copy the **microsoft-windows-netfx3-ondemand-package~31bf3856ad364e35~amd64~~.cab** file to the following folder: **C:\CMLab\DS\Operating Systems\WS2025\sources\sxs**. Failing to do so will prevent .NET Framework 3.5 from being installed if the VM does not have Internet access.
 
 ![The Windows Server 2025 Standard image copied.](docs/WS2022-WIM-Copied.png)
 
@@ -523,7 +523,7 @@ If you need to change the various service accounts, you need to to modify the **
 
 ### Customizing with a script
 
-With a huge thanks to [Matt Benninge](https://www.deploymentresearch.com/author/matbg/), a customization script called [CustomizeHydrationKit.ps1](https://github.com/DeploymentResearch/HydrationKitWS2022/blob/main/CustomizeHydrationKit.ps1) is included in this kit. This script assists in changing many of the customizable parameters of the Hydration Kit, including IP addresses, domain name, time zone, and passwords.
+With a huge thanks to [Matt Benninge](https://www.deploymentresearch.com/author/matbg/), a customization script called [CustomizeHydrationKit.ps1](https://github.com/DeploymentResearch/HydrationKitWS2025/blob/main/CustomizeHydrationKit.ps1) is included in this kit. This script assists in changing many of the customizable parameters of the Hydration Kit, including IP addresses, domain name, time zone, and passwords.
 
 In addition, the script will make a copy of the original configuration so that you can easily revert your changes. Upon rerunning the script on a customized Deployment Share, the script will revert all files to the original copies before applying your changes again.
 
