@@ -849,6 +849,13 @@
       </defaultVarList>
       <action>smsboot.exe /target:WinPE</action>
     </step>
+    <step type="BDD_InstallApplication" name="Configure - Create CM Database" description="" disable="false" continueOnError="false" runIn="WinPEandFullOS" successCodeList="0 3010">
+      <defaultVarList>
+        <variable name="ApplicationGUID" property="ApplicationGUID">{dbbfe157-d76e-4450-b218-e43a56984561}</variable>
+        <variable name="ApplicationSuccessCodes" property="ApplicationSuccessCodes">0 3010</variable>
+      </defaultVarList>
+      <action>cscript.exe "%SCRIPTROOT%\ZTIApplications.wsf"</action>
+    </step>
     <step type="BDD_InstallApplication" name="Install - SQL Server 2022 Reporting Service" description="" disable="false" continueOnError="false" runIn="WinPEandFullOS" successCodeList="0 3010">
       <defaultVarList>
         <variable name="ApplicationGUID" property="ApplicationGUID">{f054ce3a-d180-4399-870b-6a1762fcd6c4}</variable>

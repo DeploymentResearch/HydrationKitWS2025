@@ -31,12 +31,12 @@
 #Requires -RunAsAdministrator
 #Requires -Version 5.1
 
-[CmdletBinding(SupportsShouldProcess=$true)]
+[CmdletBinding(SupportsShouldProcess = $true)]
 param(
-    [parameter(Mandatory=$true, HelpMessage="Specify the path for Hydration Kit installation directory.")]
+    [parameter(Mandatory = $true, HelpMessage = "Specify the path for Hydration Kit installation directory.")]
     [ValidateNotNullOrEmpty()]
     [string]$Path,
-        [parameter(Mandatory=$true, HelpMessage="Specify the SMB share name for Hydration Kit.")]
+    [parameter(Mandatory = $true, HelpMessage = "Specify the SMB share name for Hydration Kit.")]
     [ValidateNotNullOrEmpty()]
     [string]$ShareName
 
@@ -45,7 +45,7 @@ param(
 # Some basic validations
 
 # Verify that MDT 8456 is installed
-if (!((Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\* | Where-Object {$_.DisplayName -eq "Microsoft Deployment Toolkit (6.3.8456.1000)"}).Displayname).count) {
+if (!((Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\* | Where-Object { $_.DisplayName -eq "Microsoft Deployment Toolkit (6.3.8456.1000)" }).Displayname).count) {
     Write-Warning "MDT 8456 not installed, aborting..."
     Break
 }
@@ -55,7 +55,7 @@ $MDTInstallDir = ((Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Deployment 4
 $X64HotFixPath = "$MDTInstallDir\Templates\Distribution\Tools\x64\Microsoft.BDD.Utility.dll"
 $X64HotFixVersion = (Get-Item $X64HotFixPath).VersionInfo.ProductPrivatePart
 
-If (!($X64HotFixVersion -ge 1001)){
+If (!($X64HotFixVersion -ge 1001)) {
     Write-Warning "MDT 8456 HotFix (KB4564442) is not installed, aborting..."
     Write-Warning "The updated Microsoft.BDD.Utility.dll file needs to be copied to the MDT installation directory"
     Write-Warning "See KB4564442 for details"
@@ -63,17 +63,17 @@ If (!($X64HotFixVersion -ge 1001)){
 }
 
 # Verify that Windows ADK and Windows ADK WinPE Addon are installed 
-if (!((Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Where-Object {$_.DisplayName -match "Windows Assessment and Deployment Kit*"}).Displayname).count) {
+if (!((Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Where-Object { $_.DisplayName -match "Windows Assessment and Deployment Kit*" }).Displayname).count) {
     Write-Warning "Windows ADK is not installed, aborting..."
     Break
 }
-if (!((Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Where-Object {$_.DisplayName -match "Windows Assessment and Deployment Kit Windows Preinstallation Environment*"}).Displayname).count) {
+if (!((Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Where-Object { $_.DisplayName -match "Windows Assessment and Deployment Kit Windows Preinstallation Environment*" }).Displayname).count) {
     Write-Warning "Windows ADK WinPE Addon is not installed, aborting..."
     Break
 }
 
 # Verify that the SMB share doesn't exist already
-If (Get-SmbShare | Where-Object { $_.Name -eq "$ShareName"}){
+If (Get-SmbShare | Where-Object { $_.Name -eq "$ShareName" }) {
     Write-Warning "Hydration Kit share $ShareName already exist, please cleanup and try again. Aborting..."
     Break
 }
@@ -93,14 +93,14 @@ if (Test-Path -Path "DS001:") {
 # Check free disk space. Minimum for the Hydration Kit is 50 GB
 $KitRootDrive = Split-Path -Path $Path -Qualifier
 $NeededFreeSpace = 50GB
-$NeededFreeSpaceInGB = [MATH]::ROUND($NeededFreeSpace /1GB)
+$NeededFreeSpaceInGB = [MATH]::ROUND($NeededFreeSpace / 1GB)
 $Disk = Get-CimInstance -ClassName Win32_LogicalDisk -Filter "DeviceID='$KitRootDrive'" 
 $FreeSpace = $Disk.FreeSpace
-$FreeSpaceInGB = [MATH]::ROUND($FreeSpace /1GB)
+$FreeSpaceInGB = [MATH]::ROUND($FreeSpace / 1GB)
 #Write-Output "Checking free space on $KitRootDrive"
 #Write-Output "Hydration Kit requires $NeededFreeSpaceInGB GB"
 
-if($FreeSpace -lt $NeededFreeSpace){
+if ($FreeSpace -lt $NeededFreeSpace) {
     Write-Warning "You need at least $NeededFreeSpaceInGB GB of free disk space on $KitRootDrive "
     Write-Warning "Available free disk space on C: is $FreeSpaceInGB GB"
     Write-Warning "Aborting script..."
