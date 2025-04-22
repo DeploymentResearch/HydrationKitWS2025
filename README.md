@@ -246,11 +246,11 @@ Next step is to start copying the various installation files to the correct fold
 
 **Note #2:** If your VMs does not have Internet access during the Hydration Kit build, make sure to also copy the **microsoft-windows-netfx3-ondemand-package~31bf3856ad364e35~amd64~~.cab** file to the following folder: **C:\CMLab\DS\Operating Systems\WS2025\sources\sxs**. Failing to do so will prevent .NET Framework 3.5 from being installed if the VM does not have Internet access.
 
-![The Windows Server 2025 Standard image copied.](docs/WS2022-WIM-Copied.png)
+![The Windows Server 2025 Standard image copied.](docs/WS2025-WIM-Copied.png)
 
 *The Windows Server 2025 Standard image copied.*
 
-![.NET Framework 3.5 copied](docs/WS2022-Sources-Sxs-Copied.png)
+![.NET Framework 3.5 copied](docs/WS2025-Sources-Sxs-Copied.png)
 
 *.NET Framework 3.5 copied*
 
@@ -277,13 +277,13 @@ Next step is to start copying the various installation files to the correct fold
 5\. Copy the **SQL Server 2022 Standard x64** setup files (the content of the ISO, not the actual ISO) to the following folder:\
 **C:\CMLab\DS\Applications\Install - SQL Server 2022 Standard\Source**
 
-![SQL Server 2022 Standard x64 setup files copied.](docs/SQL-Server-2019-Standard-Copied.png)
+![SQL Server 2022 Standard x64 setup files copied.](docs/SQL-Server-2022-Standard-Copied.png)
 
 *SQL Server 2022 Standard x64 setup files copied.*
 
 6\. In the **C:\CMLab\DS\Applications\Install - SQL Server 2022 Standard\Source** folder, create a subfolder named **Updates**, and copy the latest **SQL Server 2022 CU** setup file to it (CU 17 when I wrote this guide).
 
-![The SQL Server 2022 CU copied to Updates folder.](docs/SQL-Server-2019-CU-14-Copied.png)
+![The SQL Server 2022 CU copied to Updates folder.](docs/SQL-Server-2022-CU-Copied.png)
 
 *The SQL Server 2022 CU copied to Updates folder.*
 
@@ -345,7 +345,7 @@ Next step is to start copying the various installation files to the correct fold
 1\. Copy the SQL Server 2022 Express setup file (SQLEXPR_x64_ENU.exe) to the following folder:\
 **C:\CMLab\DS\Applications\Install - SQL Server 2022 Express\Source**
 
-![SQL Server 2022 Express setup file copied.](docs/SQL-Server-2019-Express-Copied.png)
+![SQL Server 2022 Express setup file copied.](docs/SQL-Server-2022-Express-Copied.png)
 
 *SQL Server 2022 Express setup file copied.*
 
