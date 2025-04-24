@@ -136,7 +136,7 @@ Copy-Item -Path "$ScriptPath\Source\Hydration\Tools\Modules" -Destination "$Path
 Copy-Item -Path "$ScriptPath\Source\Media\Control" -Destination "$Path\ISO\Content\Deploy" -Recurse -Force
 
 # Create target folder structure for the operating systems
-New-Item -Path "$Path\DS\Operating Systems\WS2022\sources\sxs" -ItemType Directory -Force
+New-Item -Path "$Path\DS\Operating Systems\WS2025\sources\sxs" -ItemType Directory -Force
 New-Item -Path "$Path\DS\Operating Systems\Windows 10\sources\sxs" -ItemType Directory -Force
 New-Item -Path "$Path\DS\Operating Systems\Windows 11\sources\sxs" -ItemType Directory -Force
 
