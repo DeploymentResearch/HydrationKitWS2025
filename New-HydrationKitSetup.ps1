@@ -120,7 +120,7 @@ New-SmbShare -Name $ShareName -Path "$Path\DS" -ChangeAccess EVERYONE | Out-Null
 New-PSDrive -Name "DS001" -PSProvider "MDTProvider" -Root "$Path\DS" -Description "Hydration Kit ConfigMgr" -NetworkPath "\\$MDTServer\$ShareName" | add-MDTPersistentDrive | Out-Null
 
 New-Item -Path "$Path\ISO\Content\Deploy" -ItemType Directory | Out-Null
-New-Item -path "DS001:\Media" -enable "True" -Name "MEDIA001" -Comments "" -Root "$Path\ISO" -SelectionProfile "Everything" -SupportX86 "False" -SupportX64 "True" -GenerateISO "True" -ISOName "HydrationCMWS2022.iso"  | Out-Null
+New-Item -path "DS001:\Media" -enable "True" -Name "MEDIA001" -Comments "" -Root "$Path\ISO" -SelectionProfile "Everything" -SupportX86 "False" -SupportX64 "True" -GenerateISO "True" -ISOName "HydrationCMWS2025.iso"  | Out-Null
 New-PSDrive -Name "MEDIA001" -PSProvider "MDTProvider" -Root "$Path\ISO\Content\Deploy" -Description "Hydration Kit ConfigMgr Media" -Force | Out-Null
 
 # Configure MEDIA001 Settings (disable MDAC) - Not needed in the Hydration Kit
