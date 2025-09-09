@@ -2,8 +2,8 @@
 
 ************************************************************************************************************************
 
-Created:	2025-02-26
-Version:	1.0
+Created:	2025-09-02 
+Version:	1.2
 
 Disclaimer:
 This script is provided "AS IS" with no warranties, confers no rights and 
@@ -35,22 +35,64 @@ else{
     $SourcePath = $PSScriptRoot
 }
 
-#Load config file containing install parameters
-. "$($sourcePath)\ADDSConfig.ps1"
-
 Set-HYDLogPath
 Write-HYDLog -Message "Starting ADDS Configuration for domain $domainName... "
 
-$secureDSRM = ConvertTo-SecureString -String $DSRM
-Install-ADDSForest -DomainName $domainName -DomainNetbiosName $domainNetbiosname -ForestMode $forestMode -DomainMode $domainMode -SafeModeAdministratorPassword (ConvertTo-SecureString -String $DSRM -AsPlainText -Force) -NoRebootOnCompletion -Confirm:$false
+# Read Task Sequence Variables for AD Setup
+$NewDomainDNSName = $tsenv.Value("NewDomainDNSName")
+$DomainNetBiosName = $tsenv.Value("DomainNetBiosName")
+$ForestLevel = $tsenv.Value("ForestLevel")
+$DomainLevel = $tsenv.Value("DomainLevel")
+$SafeModeAdminPassword = $tsenv.Value("SafeModeAdminPassword")
 
-#Install Validation
-$newDomain = Get-ADDomain
-$newForest = Get-ADForest
+# Validate Variables
+$RequiredVars = @(
+    'NewDomainDNSName'
+    'DomainNetBiosName'
+    'ForestLevel'
+    'DomainLevel'
+    'SafeModeAdminPassword'
+)
 
-if (!$newDomain) {
-    Write-HYDLog -Message "Domain configuration failed! aborting..." -LogLevel 2; Break
+$missing = foreach($RequiredVar in $RequiredVars){
+    $var = (Get-Variable $RequiredVar -ErrorAction SilentlyContinue).Value
+    if($null -eq $var -or [string]::IsNullOrWhiteSpace("$var")){
+        Write-HYDLog "Missing: $RequiredVar"; $RequiredVar
+    } 
+    else {
+        $out = if($RequiredVar -match '(?i)password|secret|token|key'){ '[value present]' } else { $var }
+        Write-HYDLog "$RequiredVar`: $out"
+    }
 }
-else {
-    Write-HYDLog -Message "Domain configuration completed successfully."
+
+if($missing){ 
+    Write-HYDLog ("Missing variables: {0}" -f ($missing -join ', '))
+    Write-HYDLog "Aborting script..."
+    Exit 1
+} 
+else { 
+    Write-HYDLog -Message "All required variables present." 
 }
+
+# Configuring Active Directory
+Try{
+    Write-HYDLog -Message "Configuring Active Directory Domain Services"
+    $secureDSRM = ConvertTo-SecureString -String $SafeModeAdminPassword -AsPlainText -Force
+
+    $HashArguments = @{
+        DomainName                    = $NewDomainDNSName
+        DomainNetbiosName             = $DomainNetBiosName
+        ForestMode                    = $ForestLevel
+        DomainMode                    = $DomainLevel
+        SafeModeAdministratorPassword = $secureDSRM
+        NoRebootOnCompletion          = $true
+        Confirm                       = $false
+    }
+    Install-ADDSForest @HashArguments 
+    Write-HYDLog -Message "Active Directory Domain Services configured successfully"
+}
+Catch{
+    Write-HYDLog -Message $("Failed to configure Active Directory Domain Services. Error: "+ $_.Exception.Message)
+    Exit 1
+}
+

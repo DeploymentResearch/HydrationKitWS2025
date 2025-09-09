@@ -745,15 +745,6 @@
       </defaultVarList>
       <action>cscript.exe "%SCRIPTROOT%\ZTIOSRole.wsf"</action>
     </step>
-    <step name="Configure - ADDS" disable="true" continueOnError="true" successCodeList="0 3010" description="" startIn="">
-      <action>cscript.exe "%SCRIPTROOT%\ZTIConfigureADDS.wsf"</action>
-      <defaultVarList>
-        <variable name="RunAsUser" property="RunAsUser">false</variable>
-        <variable name="SMSTSRunCommandLineUserName" property="SMSTSRunCommandLineUserName"></variable>
-        <variable name="SMSTSRunCommandLineUserPassword" property="SMSTSRunCommandLineUserPassword"></variable>
-        <variable name="LoadProfile" property="LoadProfile">false</variable>
-      </defaultVarList>
-    </step>
     <step type="BDD_InstallApplication" name="Configure - ADDS" description="" disable="false" continueOnError="false" runIn="WinPEandFullOS" successCodeList="0 3010">
       <defaultVarList>
         <variable name="ApplicationGUID" property="ApplicationGUID">{9d0a09bc-20b2-4fb0-861f-ffb9daaf08e0}</variable>

@@ -6,8 +6,8 @@
 .EXAMPLE
     C:\Setup\Scripts\Invoke-VIAInstallSQLServerExpress.ps1 -Setup "C:\Setup\SQL_2022_Express\SQLEXPR_x64_ENU.exe" -SQLINSTANCENAME "SQLExpress" -SQLINSTANCEDIR "E:\SQLDB"
 .NOTES
-    Created:	 2021-12-22
-    Version:	 1.0
+    Created:	 2025-09-03
+    Version:	 1.1
 
     Author - Johan Arwidmark
     Twitter: @jarwidmark
@@ -74,32 +74,21 @@ Function Invoke-Exe{
 $unattendFile = New-Item "$env:temp\ConfigutionFile.ini" -type File -Force
 set-Content $unattendFile "[OPTIONS]"
 add-Content $unattendFile "ACTION=Install"
-add-Content $unattendFile "ROLE=""AllFeatures_WithDefaults"""
 add-Content $unattendFile "ENU=""True"""
 add-Content $unattendFile "QUIET=""True"""
 add-Content $unattendFile "QUIETSIMPLE=""False"""
 add-Content $unattendFile "UpdateEnabled=""False"""
-add-Content $unattendFile "FEATURES=""SQLENGINE"""
+add-Content $unattendFile "FEATURES=""SQL"""
 add-Content $unattendFile "UpdateSource=""MU"""
 add-Content $unattendFile "HELP=""False"""
 add-Content $unattendFile "INDICATEPROGRESS=""False"""
-add-Content $unattendFile "X86=""False"""
 add-Content $unattendFile "INSTALLSHAREDDIR=""C:\Program Files\Microsoft SQL Server"""
 add-Content $unattendFile "INSTALLSHAREDWOWDIR=""C:\Program Files (x86)\Microsoft SQL Server"""
 add-Content $unattendFile "INSTANCENAME=""$SQLINSTANCENAME"""
 add-Content $unattendFile "INSTANCEID=""$SQLINSTANCENAME"""
-add-Content $unattendFile "SQMREPORTING=""False"""
-add-Content $unattendFile "ERRORREPORTING=""False"""
 add-Content $unattendFile "INSTANCEDIR=""$SQLINSTANCEDIR"""
-add-Content $unattendFile "AGTSVCACCOUNT=""NT AUTHORITY\NETWORK SERVICE"""
-add-Content $unattendFile "AGTSVCSTARTUPTYPE=""Disabled"""
-add-Content $unattendFile "COMMFABRICPORT=""0"""
-add-Content $unattendFile "COMMFABRICNETWORKLEVEL=""0"""
-add-Content $unattendFile "COMMFABRICENCRYPTION=""0"""
-add-Content $unattendFile "MATRIXCMBRICKCOMMPORT=""0"""
 add-Content $unattendFile "SQLSVCSTARTUPTYPE=""Automatic"""
 add-Content $unattendFile "FILESTREAMLEVEL=""0"""
-add-Content $unattendFile "ENABLERANU=""True"""
 add-Content $unattendFile "SQLCOLLATION=""SQL_Latin1_General_CP1_CI_AS"""
 add-Content $unattendFile "SQLSVCACCOUNT=""NT AUTHORITY\NETWORK SERVICE"""
 add-Content $unattendFile "SQLSYSADMINACCOUNTS=""BUILTIN\Administrators"""
@@ -114,5 +103,5 @@ Invoke-Exe -Executable $Setup -Arguments "/q /x:C:\SQLtmp"
 Write-Verbose "Install SQL Express 2022, please wait"
 Invoke-Exe -Executable C:\SQLtmp\SETUP.EXE -Arguments "/ConfigurationFile=$unattendFile"
 
-Remove-Item C:\SQLtmp -Recurse -Force
+Remove-Item C:\SQLtmp -Recurse -Force 
 
