@@ -44,6 +44,7 @@ $DomainNetBiosName = $tsenv.Value("DomainNetBiosName")
 $ForestLevel = $tsenv.Value("ForestLevel")
 $DomainLevel = $tsenv.Value("DomainLevel")
 $SafeModeAdminPassword = $tsenv.Value("SafeModeAdminPassword")
+$NewSiteName = $tsenv.Value("SiteName")
 
 # Validate Variables
 $RequiredVars = @(
@@ -52,6 +53,7 @@ $RequiredVars = @(
     'ForestLevel'
     'DomainLevel'
     'SafeModeAdminPassword'
+    'NewSiteName'
 )
 
 $missing = foreach($RequiredVar in $RequiredVars){
@@ -96,3 +98,12 @@ Catch{
     Exit 1
 }
 
+# Rename Active Directory Site
+Try{
+    Get-ADReplicationSite Default-First-Site-Name | Rename-ADObject -NewName $NewSiteName -ErrorAction Stop
+    Write-HYDLog -Message  "Successfully renamed Default-First-Site-Name to $NewSiteName"
+    }
+Catch{
+     Write-HYDLog -Message $("Failed to rename site. Error: "+ $_.Exception.Message)
+     Break;
+}
