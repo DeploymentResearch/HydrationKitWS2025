@@ -46,7 +46,7 @@ On Error Goto 0
 '// Purpose: Perform main ZTI processing
 '// 
 '//---------------------------------------------------------------------------
-Function ZTIProcess() 
+Function ZTIProcess()
 
     Dim sSQLMaximumMemory
     Dim sSQLConfigurationFile
@@ -80,7 +80,7 @@ Function ZTIProcess()
 
     ' Run the SQL Script using OSQL, output to logfile
     oLogging.CreateEntry "Configure SQL Server Memory: Setting SQL Server Maximum Memory to: " & sSQLMaximumMemory & " MB", LogTypeInfo	    
-    oShell.Run """C:\Program Files\Microsoft SQL Server\150\Tools\Binn\osql"" -S localhost -E -i""" & sSQLConfigurationFile & """ " & "-o """ & oUtility.LocalRootPath & "\SMSOSD\OSDLOGS\Configure-SQLServerMemory_osql_output.log"""
+    oShell.Run """C:\Program Files\Microsoft SQL Server\160\Tools\Binn\osql"" -S localhost -E -i""" & sSQLConfigurationFile & """ " & "-o """ & oUtility.LocalRootPath & "\SMSOSD\OSDLOGS\Configure-SQLServerMemory_osql_output.log"""
 
 End Function
 

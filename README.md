@@ -1,6 +1,6 @@
 # Hydration Kit For Windows Server 2025, SQL Server 2022 and ConfigMgr Current Branch
 
-This kit builds a complete **ConfigMgr Current Branch 2403** infrastructure running on **Windows Server 2025** and **SQL Server 2022**, including optional **Windows 10** and **Windows 11** clients. This kit is tested on both Hyper-V and VMware virtual platforms, but should work fine on other virtualization platforms like Virtual Box, KVM etc.
+This kit builds a complete **ConfigMgr Current Branch 2403 or 2509** infrastructure running on **Windows Server 2025** and **SQL Server 2022**, including optional **Windows 10** and **Windows 11** clients. This kit is tested on both Hyper-V and VMware virtual platforms, but should work fine on other virtualization platforms like Virtual Box, KVM etc.
 
 - [Notes](#notes)
 - [Hydration Kit for Windows Server 2025 and ConfigMgr Current Branch](#hydration-kit-for-windows-server-2025-and-configmgr-current-branch)
@@ -58,7 +58,7 @@ Download from GitHub: <https://github.com/DeploymentResearch/HydrationKitWS2025>
 
 ## Hydration Kit for Windows Server 2025 and ConfigMgr Current Branch
 
-So, again, this Kit builds a complete ConfigMgr Current Branch 2403, with Windows Server 2025 and SQL Server 2022 infrastructure, and some supporting servers. Once the build is complete, I recommend that you use the native ConfigMgr servicing option to update to latest release or Hotfix if available.
+So, again, this Kit builds a complete ConfigMgr Current Branch 2403 or 2509, with Windows Server 2025 and SQL Server 2022 infrastructure, and some supporting servers. Once the build is complete, I recommend that you use the native ConfigMgr servicing option to update to latest release or Hotfix if available.
 
 ### Servers
 
@@ -121,10 +121,12 @@ Then, for the main servers (DC01 and CM01), you need to download the following s
 - SQL Server 2022 Latest Cumulative Update: [https://www.microsoft.com/en-us/download/details.aspx?id=105013](https://www.microsoft.com/en-us/download/details.aspx?id=105013) (ConfigMgr only requires the base version of SQL Server 2022, but I recommend using the latest CU).
 - SQL Server 2022 Reporting Services: <https://www.microsoft.com/en-us/download/details.aspx?id=104502>
 - SQL Server Management Studio: <https://aka.ms/ssmsfullsetup>
-- Microsoft ODBC Driver 18 for SQL Server (x64): <https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server>
-- ConfigMgr 2403 and its prerequisites: Either a fully licensed version from VLSC or MSDN, or a 180 days trial version from the Microsoft Evaluation Center: <https://www.microsoft.com/en-us/evalcenter/evaluate-microsoft-endpoint-configuration-manager>
+- Microsoft ODBC Driver 18.5.2 for SQL Server (x64): <https://go.microsoft.com/fwlink/?linkid=2335671>
+- **Note:** Using the latest ODBC Driver, currently 18.6.1.1 will break the ConfigMgr installation
+- ConfigMgr 2403 or 2509 and its prerequisites: Either a fully licensed version from VLSC or Visual Studio downloads, or a 180 days trial version from the Microsoft Evaluation Center: <https://www.microsoft.com/en-us/evalcenter/evaluate-microsoft-endpoint-configuration-manager>
+>**Note #1:** As of February 2026, ConfigMgr 2509 is not available for download via the Microsoft Evaluation Center, only ConfigMgr 2403. ConfigMgr 2509 is available on VLSC or Visual Studio downloads. Even though ConfigMgr 2403 is no longer supported, you can still install it, and then upgrade to ConfigMgr 2509.
 
->**Note:** To download the ConfigMgr prerequisites, you run the **SMSSETUP\BIN\X64\setupdl.exe** application from the ConfigMgr installation files and simply provide a folder for the download.
+>**Note #2:** To download the ConfigMgr prerequisites, you run the **SMSSETUP\BIN\X64\setupdl.exe** application from the ConfigMgr installation files and simply provide a folder for the download.
 
 ![Running setupdl.exe to download ConfigMgr pre-requisites.](docs/image-3.png)
 
@@ -308,14 +310,14 @@ Next step is to start copying the various installation files to the correct fold
 
 *Microsoft ODBC Driver 18 for SQL Server (x64)setup files copied.*
 
-10\. Copy the **ConfigMgr 2403** setup files (extract the download) to the following folder:\
+10\. Copy the **ConfigMgr 2403 or 2509** setup files (extract the download) to the following folder:\
 **C:\CMLab\DS\Applications\Install - ConfigMgr\Source**
 
 ![ConfigMgr setup files copied.](docs/CMCopied.png)
 
 *ConfigMgr setup files copied.*
 
-11\. Copy the **ConfigMgr 2403 PreReqs** setup files to the following folder:\
+11\. Copy the **ConfigMgr 2403 or 2509 PreReqs** setup files to the following folder:\
 **C:\CMLab\DS\Applications\Install - ConfigMgr\PreReqs**
 
 ![ConfigMgr Pre-requisite files copied, showing a subset of the files.](docs/CMPreReqsCopied.png)
