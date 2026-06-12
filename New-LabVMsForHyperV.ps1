@@ -83,7 +83,7 @@ if (!(Test-Path -Path "$ISO")) {
 }
 
 # Check for Hyper-V Virtual Machine Management Service
-$Service = Get-Service -Name "Hyper-V Virtual Machine Management"
+$Service = Get-Service -Name "vmms"
 if ($Service.Status -ne "Running"){
     Write-Warning "Hyper-V Virtual Machine Management service not started, aborting script..."
     Break
